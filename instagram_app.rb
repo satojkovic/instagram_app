@@ -34,14 +34,16 @@ get "/feed" do
   user = client.user
 
   html = "<h1>#{user.username}'s recent photos</h1>"
+
   for media_item in client.user_recent_media
     html << "<img src='#{media_item.images.thumbnail.url}'>"
-    html << "<h3>#{media_item.caption}</h3>"
+    if media_item.caption then
+      html << "<h3>#{media_item.caption.text}</h3>"
+    end
     html << "<br>"
   end
+
   html
+
 end
 
-  
-
-  
