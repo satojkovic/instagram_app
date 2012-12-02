@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title instagram app
+
+  body
+    h1 #{@user.username}'s recent photos
+
+    - @user_recent_media.each do |media|
+      img src='#{media.images.thumbnail.url}'/
+
+      - if media.caption?
+        h3 #{media.caption.text}
+      - else
+        br
+
